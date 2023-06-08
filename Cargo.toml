@@ -21,7 +21,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [features]
 default = ["tls", "gzip"]
-tls = ["dep:webpki-roots", "dep:rustls", "dep:rustls-pki-types"]
+tls = ["dep:rustls", "dep:rustls-pki-types"]
 native-certs = ["dep:rustls-native-certs"]
 native-tls = ["dep:native-tls"]
 json = ["dep:serde", "dep:serde_json"]

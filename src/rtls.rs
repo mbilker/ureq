@@ -78,11 +78,16 @@ fn root_certs() -> rustls::RootCertStore {
     root_cert_store
 }
 
-#[cfg(not(feature = "native-certs"))]
+#[cfg(all(feature = "webpki-roots", not(feature = "native-certs")))]
 fn root_certs() -> rustls::RootCertStore {
     rustls::RootCertStore {
         roots: webpki_roots::TLS_SERVER_ROOTS.to_vec(),
     }
+}
+
+#[cfg(all(not(feature = "webpki-roots"), not(feature = "native-certs")))]
+fn root_certs() -> rustls::RootCertStore {
+    rustls::RootCertStore::empty()
 }
 
 impl TlsConnector for Arc<rustls::ClientConfig> {
