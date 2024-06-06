@@ -51,7 +51,7 @@ encoding_rs = { version = "0.8", optional = true }
 cookie_store = { version = "0.21", optional = true, default-features = false, features = ["preserve_order"] }
 log = "0.4"
 webpki-roots = { version = "0.26", optional = true }
-rustls = { version = "0.23.5", optional = true }
+rustls = { version = "0.23.5", optional = true, default-features = false, features = ["logging", "ring", "std", "tls12"] }
 rustls-pki-types = { version = "1", optional = true }
 rustls-native-certs = { version = "0.7", optional = true }
 native-tls = { version = "0.2", optional = true }
